@@ -3,7 +3,11 @@ package org.example.grpc;
 
 message HelloRequest {
   string name = 1;
-  repeated string hobbies = 2;
+}
+
+message MultipleHelloRequest {
+  string name = 1;
+  int32 responseCount = 2;
 }
 
 message HelloResponse {
@@ -12,4 +16,5 @@ message HelloResponse {
 
 service GreetingService {
   rpc greeting(HelloRequest) returns (HelloResponse);
+  rpc greetings(MultipleHelloRequest) returns (stream HelloResponse);
 }
